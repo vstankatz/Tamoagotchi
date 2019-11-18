@@ -7,9 +7,25 @@ export class Health {
   }
 
   setHealth() {
+    if (this.mess > 100) {
+      setInterval(() => {
+        this.healthLevel--;
+      }, 500);
+    } else {
+      setInterval(() => {
+        this.healthLevel--;
+      }, 1000);
+    }
+  }
+
+  makeMess() {
     setInterval(() => {
-      this.healthLevel--;
-    }, 1000);
+      this.mess++;
+    }, 4000);
+  }
+
+  messRuinsHealth() {
+
   }
 
   affection() {
@@ -18,5 +34,6 @@ export class Health {
 
   feed() {
     this.healthLevel += 20;
+    this.mess += 10;
   }
 }
