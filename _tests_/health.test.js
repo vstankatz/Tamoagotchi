@@ -1,12 +1,14 @@
 import {Health} from './../src/tam.js';
 
 describe('Health', () => {
+
   jest.useFakeTimers();
   let health;
 
   beforeEach(function() {
     health = new Health("Florian", "Wood Elf");
     health.setHealth();
+    health.healthLevel = 100
     health.makeMess();
   });
 
@@ -32,6 +34,12 @@ describe('Health', () => {
     health.setHealth();
     jest.advanceTimersByTime(10000);
     expect(health.healthLevel).toEqual(80);
+  });
+
+  test('should reset the health level to 100 if the health level is greater than 100', () => {
+    health.feed();
+    health.setHealth();
+    expect(health.healthLevel).toEqual(100);
   })
 
   test('mess increases by 1 every 4 seconds', () => {
@@ -57,8 +65,28 @@ describe('Health', () => {
     health.sleep();
     jest.advanceTimersByTime(50001);
     expect(health.healthLevel).toEqual(90);
-
   })
 
+  test('health does not regenerate during sleep if messy', () => {
+    jest.clearAllTimers();
+    health.healthLevel = 80;
+    health.mess = 101;
+    health.setHealth();
+    health.sleep();
+    jest.advanceTimersByTime(10000);
+    expect(health.healthLevel).toEqual(80);
+  });
 
+  test('should decrease health if stayed asleep too long', () => {
+    health.healthLevel = 0;
+    health.sleep();
+    jest.advanceTimersByTime(103000);
+    expect(health.healthLevel).toEqual(97);
+  })
+
+  test('going for a walk effects health by probability', () => {
+    jest.advanceTimersByTime(50001);
+    health.walk();
+    expect(health.healthLevel).toBeLessThan(100)
+  });
 });
