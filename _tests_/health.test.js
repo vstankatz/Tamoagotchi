@@ -19,4 +19,15 @@ describe('Health', () => {
     expect(health.healthLevel).toEqual(100);
     expect(health.mess).toEqual(0);
   });
+
+  test('health degrades 1 every second', () => {
+    jest.advanceTimersByTime(50001);
+    expect(health.healthLevel).toEqual(50);
+  })
+
+  test('affection increases health by 10', () => {
+    jest.advanceTimersByTime(50001);
+    health.affection();
+    expect(health.healthLevel).toEqual(60);
+  })
 });

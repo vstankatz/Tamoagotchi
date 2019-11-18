@@ -11,4 +11,12 @@ export class Health {
       this.healthLevel--;
     }, 1000);
   }
+
+  affection() {
+    this.healthLevel += 10;
+  }
+
+  feed() {
+    this.healthLevel += 20;
+  }
 }
