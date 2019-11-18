@@ -30,9 +30,7 @@ describe('Health', () => {
     jest.clearAllTimers();
     health.mess = 101;
     health.setHealth();
-    console.log(health.healthLevel);
     jest.advanceTimersByTime(10000);
-    console.log(health.mess, health.healthLevel);
     expect(health.healthLevel).toEqual(80);
   })
 
@@ -48,11 +46,19 @@ describe('Health', () => {
   })
 
   test('feeding adds 20 to health and 10 to mess', () => {
-      jest.advanceTimersByTime(50001);
-      health.feed();
-      expect(health.healthLevel).toEqual(70);
-      expect(health.mess).toEqual(22);
+    jest.advanceTimersByTime(50001);
+    health.feed();
+    expect(health.healthLevel).toEqual(70);
+    expect(health.mess).toEqual(22);
   });
+
+  test('regenerates health at 1 every second', () => {
+    health.healthLevel = 40;
+    health.sleep();
+    jest.advanceTimersByTime(50001);
+    expect(health.healthLevel).toEqual(90);
+
+  })
 
 
 });

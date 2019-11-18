@@ -24,9 +24,6 @@ export class Health {
     }, 4000);
   }
 
-  messRuinsHealth() {
-
-  }
 
   affection() {
     this.healthLevel += 10;
@@ -35,5 +32,11 @@ export class Health {
   feed() {
     this.healthLevel += 20;
     this.mess += 10;
+  }
+
+  sleep() {
+    setInterval(() => {
+      this.healthLevel ++;
+    }, 500)
   }
 }
