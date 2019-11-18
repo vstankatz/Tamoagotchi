@@ -5,5 +5,40 @@
 </head>
 <body>
 
-  </body>
-  </html>
+  <div class="userInput">
+    <form id="userInput">
+
+      <label>Name your tamagotchi!</label>
+      <input id="nameInput" type="text">
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="speciesType" id="option1" autocomplete="off" value="woodelf" checked> Wood Elf
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="speciesType" id="option2" autocomplete="off" value="hobbit"> Hobbit
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="speciesType" id="option3" autocomplete="off" value="dwarf"> Dwarf
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-dark">Start Game!</button>
+    </form>
+  </div>
+  <div class="tamagotchi">
+
+    <div class="viewHealth">
+      <h1 id="viewHealth"></h1>
+    </div>
+
+    <button id="feed" type="button" class="btn btn-secondary">Feed</button>
+    <button id="love" type="button" class="btn btn-secondary">Love</button>
+    <button id="walk" type="button" class="btn btn-secondary">Take for Walk</button>
+    <button id="sleep" type="button" class="btn btn-secondary">Put to Bed</button>
+    <button id="clean" type="button" class="btn btn-secondary">Clean</button>
+
+  </div>
+
+</body>
+</html>

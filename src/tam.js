@@ -3,22 +3,22 @@ export class Health {
   constructor(name,species) {
     this.name = name;
     this.species = species;
-    this.healthLevel <= 100;
+    this.healthLevel = 100;
     this.mess = 0;
   }
 
   setHealth() {
+    if (this.healthLevel >= 100) {
+      this.healthLevel = 100;
+    }
     if (this.mess > 100) {
       setInterval(() => {
         this.healthLevel--;
       }, 500);
     } else {
-      let healthTimer = setInterval(() => {
+      setInterval(() => {
         this.healthLevel--;
       }, 1000);
-    }
-    if (this.healthLevel > 100) {
-      this.healthLevel = 100;
     }
   }
 
@@ -40,7 +40,12 @@ export class Health {
 
   sleep() {
     let sleepTimer = setInterval(() => {
-      this.healthLevel ++;
+      if(this.healthLevel >= 100) {
+        clearInterval(sleepTimer)
+        return;
+      } else {
+        this.healthLevel ++;
+      }
     }, 500);
     setTimeout(() => {
       clearInterval(sleepTimer);
@@ -50,18 +55,29 @@ export class Health {
     }
   }
 
- walk() {
-   let min = Math.ceil(11);
-       let max = Math.floor(0);
-       let walkRisk =  Math.floor(Math.random() * (max - min + 1)) + min;
-       if(walkRisk<7) {
-         this.healthLevel += 40;
-       } else if (walkRisk > 9) {
-         this.healthLevel -= 20;
-       } else {
-         return;
-       }
- }
+  walk() {
+    let min = Math.ceil(11);
+    let max = Math.floor(0);
+    let walkRisk =  Math.floor(Math.random() * (max - min + 1)) + min;
+    if(walkRisk<7) {
+      this.healthLevel += 40;
+    } else if (walkRisk > 9) {
+      this.healthLevel -= 20;
+    } else {
+      return;
+    }
+  }
 
+  clean() {
+    this.mess -= 10;
+  }
+
+setPar() {
+  if(this.healthLevel>100) {
+    this.healthLevel = 100;
+  } else if(this.healthLevel<0) {
+    this.healthLevel = 0;
+  }
+}
 
 }

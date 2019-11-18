@@ -78,7 +78,7 @@ describe('Health', () => {
   });
 
   test('should decrease health if stayed asleep too long', () => {
-    health.healthLevel = 0;
+    health.healthLevel = 100;
     health.sleep();
     jest.advanceTimersByTime(103000);
     expect(health.healthLevel).toEqual(97);
@@ -89,4 +89,10 @@ describe('Health', () => {
     health.walk();
     expect(health.healthLevel).toBeLessThan(100)
   });
+
+  test('cleaning will remove 10 mess points per', () => {
+    health.mess = 50;
+    health.clean();
+    expect(health.mess).toEqual(40);
+  })
 });
