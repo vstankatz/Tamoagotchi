@@ -16,6 +16,8 @@ $(document).ready(function() {
     const health = new Health(name,species);
     health.setHealth();
     health.makeMess();
+    $('#inputName').text(health.name);
+    $('#species').text(health.species);
     console.log(health.healthLevel);
     console.log(health.mess);
     $("button#feed").click(function() {
@@ -40,6 +42,7 @@ $(document).ready(function() {
     setInterval(() => {
       health.setPar();
       $("#viewHealth").text(health.healthLevel);
+      $('#mess').text(health.mess);
       console.log(health.healthLevel);
       console.log(health.mess);
     }, 500)

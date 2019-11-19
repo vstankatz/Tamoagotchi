@@ -72,12 +72,25 @@ export class Health {
     this.mess -= 10;
   }
 
-setPar() {
-  if(this.healthLevel>100) {
-    this.healthLevel = 100;
-  } else if(this.healthLevel<0) {
-    this.healthLevel = 0;
+  setPar() {
+    if(this.healthLevel>100) {
+      this.healthLevel = 100;
+    } else if(this.healthLevel<0) {
+      this.healthLevel = 0;
+    }
+    if(this.mess < 0) {
+      this.mess = 0;
+    } else if (this.mess>50){
+      this.healthLevel--;
+    }
   }
-}
+
+  doubleDecrease() {
+    if (this.mess > 50) {
+      setInterval(() => {
+        this.healthLevel--;
+      }, 500);
+    }
+  }
 
 }
