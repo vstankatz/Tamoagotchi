@@ -1,9 +1,14 @@
 .tamagotchi {
   display: none;
+  /* background-image: url('../img/toy.jpg'); */
 }
 
 
 h1 {
   text-transform: uppercase;
   font-family: impact;
+}
+
+.snoozeButton {
+  display: none;
 }

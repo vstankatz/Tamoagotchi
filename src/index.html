@@ -28,9 +28,6 @@
   </div>
   <div class="tamagotchi">
     <div class="row">
-      <div class="col-sm-">
-
-      </div>
 
     </div>
     <div class="viewHealth">
@@ -41,14 +38,18 @@
       <h1>your mess:<span id="mess"></span></h1>
     </div>
     <div class="buttons">
-      <button id="feed" type="button" class="btn btn-secondary">Feed</button>
-      <button id="love" type="button" class="btn btn-secondary">Love</button>
-      <button id="walk" type="button" class="btn btn-secondary">Take for Walk</button>
-      <button id="sleep" type="button" class="btn btn-secondary">Put to Bed</button>
-      <button id="clean" type="button" class="btn btn-secondary">Clean</button>
+      <button value="1" onclick='f1()' id="feed" type="button" class="action btn btn-secondary">Feed</button>
+      <button value="2" id="love" type="button" class="action btn btn-secondary">Love</button>
+      <button value="3" id="walk" type="button" class="action btn btn-secondary">Take for Walk</button>
+      <button value="4" id="sleep" type="button" class="action btn btn-secondary">Put to Bed</button>
+      <button value="5" id="clean" type="button" class="action btn btn-secondary">Clean</button>
 
     </div>
-<img id="face" src="">
+    <div class="snoozeButton">
+      <button id="wakeUp" type="button" class="btn btn-secondary" name="button">Wake Up!</button>
+      <button value="5" id="cleanSleep" type="button" class="action btn btn-secondary">Clean</button>
+    </div>
+    <img id="face" src="">
   </div>
 
 </body>

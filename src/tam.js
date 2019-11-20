@@ -1,10 +1,12 @@
 
 export class Health {
-  constructor(name,species) {
+  constructor(name, species, giphy) {
     this.name = name;
     this.species = species;
     this.healthLevel = 100;
     this.mess = 0;
+    this.giphy = giphy;
+    this.walkScore = 0;
   }
 
   setHealth() {
@@ -41,7 +43,7 @@ export class Health {
   sleep() {
     let sleepTimer = setInterval(() => {
       if(this.healthLevel >= 100) {
-        clearInterval(sleepTimer)
+        clearInterval(sleepTimer);
         return;
       } else {
         this.healthLevel ++;
@@ -61,9 +63,12 @@ export class Health {
     let walkRisk =  Math.floor(Math.random() * (max - min + 1)) + min;
     if(walkRisk<7) {
       this.healthLevel += 40;
+      this.walkScore = 1;
     } else if (walkRisk > 9) {
+      this.walkScore = 3;
       this.healthLevel -= 20;
     } else {
+      this.walkScore = 2;
       return;
     }
   }
@@ -84,6 +89,7 @@ export class Health {
       this.healthLevel--;
     }
   }
+
 
   doubleDecrease() {
     if (this.mess > 50) {
